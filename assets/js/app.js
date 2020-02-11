@@ -8,62 +8,46 @@ let camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHe
 
 // =================================== TEXTURES ===================================
 let textureConcrete = new THREE.TextureLoader().load( 'assets/textures/concrete.jpg' );
-let textureGrass = new THREE.TextureLoader().load( 'assets/textures/grass.jpg' );
+let textureWater = new THREE.TextureLoader().load( 'assets/textures/water.jpg' );
 let textureCastle = new THREE.TextureLoader().load( 'assets/textures/castle.jpg' );
+let textureWood = new THREE.TextureLoader().load( 'assets/textures/wood.jpg' );
 let textureRoof = new THREE.TextureLoader().load( 'assets/textures/roof.jpg' );
 let textureWindow = new THREE.TextureLoader().load( 'assets/textures/window.jpg' );
 let textureTree = new THREE.TextureLoader().load( 'assets/textures/tree.jpg' );
 
 // =================================== MATERIALS ==================================
 let materialConcrete = new THREE.MeshBasicMaterial( {map: textureConcrete} );
-let materialGrass = new THREE.MeshBasicMaterial( {map: textureGrass} );
+let materialWater = new THREE.MeshBasicMaterial( {map: textureWater} );
 let materialRedGrass = new THREE.MeshBasicMaterial({color: 0xff0000});
 let materialCastle = new THREE.MeshBasicMaterial({map: textureCastle});
+let materialWood = new THREE.MeshBasicMaterial({map: textureWood});
 let materialRoof = new THREE.MeshBasicMaterial( { map: textureRoof } );
 let materialTree = new THREE.MeshBasicMaterial({map: textureTree});
 
 // ==================================== OBJECTS ===================================
 // Concrete
-const geometryGround = new THREE.BoxBufferGeometry(100, 1, 100); 
-let ground = new THREE.Mesh( geometryGround, materialConcrete  );
+const geometryGround = new THREE.BoxBufferGeometry(100, 1, 150); 
+let ground = new THREE.Mesh( geometryGround, materialWater  );
 ground.position.set(0, 5, 7);
 scene.add(ground);
 
-// Grass Left
-const geometryGrassLeft = new THREE.BoxBufferGeometry(40, 1.5, 15); 
-let grassLeft = new THREE.Mesh( geometryGrassLeft, materialGrass );
-grassLeft.position.set(22, 5, 15);
-scene.add(grassLeft);
+// Bridge
+const geometryBridge = new THREE.BoxBufferGeometry(12, 1.5, 100); 
+let bridge = new THREE.Mesh( geometryBridge, materialWood );
+bridge.position.set(0, 5, 40);
+scene.add(bridge);
 
-// Grass Right
-const geometryGrassRight = new THREE.BoxBufferGeometry(40, 1.5, 15); 
-let grassRight = new THREE.Mesh( geometryGrassRight, materialGrass );
-grassRight.position.set(-22, 5, 15);
-scene.add(grassRight);
+// Bridge Fence Left
+const geometryBridgeLeft = new THREE.BoxBufferGeometry(1, 5, 100); 
+let bridgeLeft = new THREE.Mesh( geometryBridgeLeft, materialWood );
+bridgeLeft.position.set(5.5, 4, 40);
+scene.add(bridgeLeft);
 
-// Red Grass Vertical Left 
-const geometryRedGrassVerticalLeft = new THREE.BoxBufferGeometry(2, 1.75, 8); 
-let redGrassVerticalLeft = new THREE.Mesh( geometryRedGrassVerticalLeft, materialRedGrass );
-redGrassVerticalLeft.position.set(6, 5, 15);
-scene.add(redGrassVerticalLeft);
-
-// Red Grass Vertical Right
-const geometryRedGrassVerticalRight = new THREE.BoxBufferGeometry(2, 1.75, 8); 
-let redGrassVerticalRight = new THREE.Mesh( geometryRedGrassVerticalRight, materialRedGrass );
-redGrassVerticalRight.position.set(-6, 5, 15);
-scene.add(redGrassVerticalRight);
-
-// Red Grass Horizontal Left 
-const geometryRedGrassHorizontalLeft = new THREE.BoxBufferGeometry(20, 1.75, 2); 
-let redGrassHorizontalLeft = new THREE.Mesh( geometryRedGrassHorizontalLeft, materialRedGrass );
-redGrassHorizontalLeft.position.set(15, 5, 18);
-scene.add(redGrassHorizontalLeft);
-
-// Red Grass Horizontal Right
-const geometryRedGrassHorizontalRight = new THREE.BoxBufferGeometry(20, 1.75, 2); 
-let redGrassHorizontalRight = new THREE.Mesh( geometryRedGrassHorizontalRight, materialRedGrass );
-redGrassHorizontalRight.position.set(-15, 5, 18);
-scene.add(redGrassHorizontalRight);
+// Bridge Fence Right
+const geometryBridgeRight = new THREE.BoxBufferGeometry(1, 5, 100); 
+let bridgeRight = new THREE.Mesh( geometryBridgeRight, materialWood );
+bridgeRight.position.set(-5.5, 4, 40);
+scene.add(bridgeRight);
 
 // Front House
 const geometryFrontHouse = new THREE.BoxBufferGeometry(15, 12, 11); 
